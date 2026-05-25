@@ -229,6 +229,12 @@ Ce prototype Excel sert désormais de base fonctionnelle au projet :
 2. Activer les macros VBA
 3. Rafraîchir les requêtes Power Query si nécessaire
 
+
+## Configuration Google Apps Script
+Ce fichier Excel utilise Google Apps Script pour ouvrir une page d’upload de documents.
+Pour des raisons de sécurité, l’ID réel du script n’est pas inclus dans le code source.
+Remplacez <GOOGLE_APPS_SCRIPT_DEPLOYMENT_ID> par votre propre ID de déploiement.
+
 ---
 
 # Notes
