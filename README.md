@@ -42,9 +42,7 @@ L’objectif initial était de remplacer un processus manuel complexe par un wor
 
 Ce prototype constitue aujourd’hui la base fonctionnelle du projet web :
 
-```text
-budget_construction
-```
+[budget_construction](https://github.com/luneroka/budget_construction)
 
 actuellement en cours de migration vers :
 - FastAPI
