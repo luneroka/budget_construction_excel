@@ -8,7 +8,7 @@ Ce projet constitue le prototype fonctionnel original du projet web `budget_cons
 
 # Aperçu du projet
 
-Ce classeur Excel a été conçu pour centraliser et automatiser le suivi financier complet d’un chantier de construction :
+Ce classeur Excel a été conçu pour centraliser et automatiser le suivi financier complet d'un chantier de construction :
 
 - gestion des devis
 - suivi des factures
@@ -19,7 +19,7 @@ Ce classeur Excel a été conçu pour centraliser et automatiser le suivi financ
 - consolidation des coûts réels
 - reporting et recherche
 
-L’objectif initial était de remplacer un processus manuel complexe par un système structuré, maintenable et automatisé, sur demande de l'utilisateur final.
+L'objectif initial était de remplacer un processus manuel complexe par un système structuré, maintenable et automatisé, sur demande de l'utilisateur final.
 
 Le projet a ensuite évolué vers une future web app full-stack basée sur :
 - FastAPI
@@ -68,7 +68,7 @@ Le projet a ensuite évolué vers une future web app full-stack basée sur :
 
 # Architecture des données
 
-Le projet utilise une architecture proche d’un mini système BI / Data Engineering dans Excel.
+Le projet utilise une architecture proche d'un mini système BI / Data Engineering dans Excel.
 
 ## Tables principales
 
@@ -202,15 +202,17 @@ Ce prototype Excel sert désormais de base fonctionnelle au projet :
 
 ## Produit / métier
 - analyse des besoins
-- conception d’outil métier
+- conception d'outil métier
 - optimisation de workflow
 - reporting financier
 
 ---
 
-# Captures d’écran
+# Captures d'écran
 
-- dashboard principal
+## Dashboard principal
+![Dashboard](docs/screenshots/dashboard.png)
+
 - recherche produit
 - suivi budget
 - tables analytiques
@@ -231,8 +233,8 @@ Ce prototype Excel sert désormais de base fonctionnelle au projet :
 
 
 ## Configuration Google Apps Script
-Ce fichier Excel utilise Google Apps Script pour ouvrir une page d’upload de documents.
-Pour des raisons de sécurité, l’ID réel du script n’est pas inclus dans le code source.
+Ce fichier Excel utilise Google Apps Script pour ouvrir une page d'upload de documents.
+Pour des raisons de sécurité, l'ID réel du script n'est pas inclus dans le code source.
 Remplacez <GOOGLE_APPS_SCRIPT_DEPLOYMENT_ID> par votre propre ID de déploiement.
 
 ---
@@ -251,7 +253,7 @@ Le développement actif se poursuit désormais sur la version web full-stack :
 Yoann Robert
 
 Projet personnel développé sur demande d'un utilisateur final souhaitant orchestrer la construction de sa maison sans passer par un constructeur professionnel.
-Ce projet s'inscrit naturellement dans le cadre d’une montée en compétence dans les domaines suivants :
+Ce projet s'inscrit naturellement dans le cadre d'une montée en compétence dans les domaines suivants :
 - Data
 - Automation
 - Développement full-stack
