@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <title>Upload fichier</title>
+
+    <style>
+      :root {
+        --color-primary: #2d6cdf;
+        --color-primary-dark: #1f56b3;
+        --color-secondary: #e9eef7;
+        --color-secondary-hover: #dbe6f7;
+        --color-background: #f5f6f8;
+        --color-surface: #ffffff;
+        --color-border: #e1e7f0;
+        --color-text: #1f1f1f;
+        --color-muted: #666666;
+        --color-success-bg: #e9f7ef;
+        --color-success-border: #b7e4c7;
+        --color-success-text: #1b4332;
+        --shadow-card: 0 10px 25px rgba(0, 0, 0, 0.1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: Arial, sans-serif;
+        background: var(--color-background);
+        color: var(--color-text);
+      }
+
+      .container {
+        width: min(90vw, 420px);
+        padding: 40px;
+        text-align: center;
+        background: var(--color-surface);
+        border-radius: 12px;
+        box-shadow: var(--shadow-card);
+      }
+
+      h1 {
+        margin: 0 0 24px;
+        font-size: 22px;
+      }
+
+      .meta-box {
+        margin-bottom: 24px;
+        padding: 16px;
+        border: 1px solid var(--color-border);
+        border-radius: 10px;
+        background: #f7f9fc;
+        text-align: left;
+      }
+
+      .meta-item {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #333333;
+      }
+
+      .meta-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .meta-item strong {
+        color: var(--color-text);
+      }
+
+      .block {
+        margin-bottom: 28px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+
+      input[type="file"] {
+        display: none;
+      }
+
+      .file-name {
+        min-height: 18px;
+        max-width: 100%;
+        font-size: 13px;
+        color: var(--color-muted);
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      button {
+        width: 100%;
+        padding: 14px;
+        border: none;
+        border-radius: 10px;
+        font-size: 16px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: background 0.2s ease, opacity 0.2s ease;
+      }
+
+      button:disabled {
+        background: #b0b0b0;
+        cursor: not-allowed;
+        opacity: 0.8;
+      }
+
+      .btn-secondary {
+        background: var(--color-secondary);
+        color: var(--color-primary);
+      }
+
+      .btn-secondary:hover {
+        background: var(--color-secondary-hover);
+      }
+
+      .btn-primary {
+        background: var(--color-primary);
+        color: #ffffff;
+      }
+
+      .btn-primary:hover {
+        background: var(--color-primary-dark);
+      }
+
+      .hint {
+        display: none;
+        margin: 0;
+        font-size: 13px;
+        color: var(--color-muted);
+      }
+
+      .success-box {
+        display: none;
+        margin-top: 20px;
+        padding: 15px;
+        border: 1px solid var(--color-success-border);
+        border-radius: 10px;
+        background: var(--color-success-bg);
+        text-align: left;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+      }
+
+      .success-title {
+        margin-bottom: 10px;
+        font-weight: bold;
+        color: var(--color-success-text);
+      }
+
+      .success-item {
+        margin-bottom: 8px;
+        font-size: 14px;
+        color: #2d2d2d;
+      }
+
+      .success-item:last-child {
+        margin-bottom: 0;
+      }
+
+      .success-item a {
+        color: var(--color-primary);
+        text-decoration: none;
+      }
+
+      .success-item a:hover {
+        text-decoration: underline;
+      }
+    </style>
+  </head>
+
+  <body>
+    <main class="container">
+      <h1>Importer un fichier</h1>
+
+      <section class="meta-box" aria-label="Métadonnées du document">
+        <div class="meta-item">
+          <strong>Type :</strong>
+          <span id="docTypeDisplay"></span>
+        </div>
+
+        <div class="meta-item">
+          <strong>Fournisseur :</strong>
+          <span id="fournisseurDisplay"></span>
+        </div>
+
+        <div class="meta-item">
+          <strong>Référence :</strong>
+          <span id="refDisplay"></span>
+        </div>
+
+        <div class="meta-item">
+          <strong>Sous-produit :</strong>
+          <span id="sousProduitDisplay"></span>
+        </div>
+      </section>
+
+      <section class="block" aria-label="Sélection du fichier">
+        <button id="selectFileBtn" type="button" class="btn-secondary">
+          Choisir un fichier
+        </button>
+
+        <input id="fileInput" type="file" accept="application/pdf" />
+
+        <div id="fileName" class="file-name">
+          Aucun fichier sélectionné
+        </div>
+      </section>
+
+      <section class="block" aria-label="Envoi du fichier">
+        <button id="uploadBtn" type="button" class="btn-primary">
+          Envoyer le fichier
+        </button>
+
+        <p id="closeHint" class="hint">
+          Upload terminé. Vous pouvez fermer cet onglet.
+        </p>
+      </section>
+
+      <section id="successBox" class="success-box" aria-label="Upload réussi">
+        <div class="success-title">
+          Upload réussi
+        </div>
+
+        <div class="success-item">
+          <strong>Fichier :</strong>
+          <span id="sFileName"></span>
+        </div>
+
+        <div class="success-item">
+          <strong>ID fichier :</strong>
+          <span id="sFileId"></span>
+        </div>
+
+        <div class="success-item">
+          <strong>Lien Drive :</strong>
+          <a id="sFileLink" href="#" target="_blank" rel="noopener noreferrer">
+            Ouvrir le fichier
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      const metadata = {
+        inputId: "<?= input_id ?>",
+        docType: "<?= docType ?>",
+        fournisseur: "<?= fournisseur ?>",
+        ref: "<?= ref ?>",
+        sousProduit: "<?= sous_produit ?>"
+      };
+
+      const elements = {
+        docTypeDisplay: document.getElementById("docTypeDisplay"),
+        fournisseurDisplay: document.getElementById("fournisseurDisplay"),
+        refDisplay: document.getElementById("refDisplay"),
+        sousProduitDisplay: document.getElementById("sousProduitDisplay"),
+        selectFileBtn: document.getElementById("selectFileBtn"),
+        fileInput: document.getElementById("fileInput"),
+        fileName: document.getElementById("fileName"),
+        uploadBtn: document.getElementById("uploadBtn"),
+        closeHint: document.getElementById("closeHint"),
+        successBox: document.getElementById("successBox"),
+        sFileName: document.getElementById("sFileName"),
+        sFileId: document.getElementById("sFileId"),
+        sFileLink: document.getElementById("sFileLink")
+      };
+
+      initializePage();
+
+      function initializePage() {
+        displayMetadata();
+        bindEvents();
+      }
+
+      function displayMetadata() {
+        elements.docTypeDisplay.textContent = metadata.docType || "-";
+        elements.fournisseurDisplay.textContent = metadata.fournisseur || "-";
+        elements.refDisplay.textContent = metadata.ref || "-";
+        elements.sousProduitDisplay.textContent = metadata.sousProduit || "-";
+      }
+
+      function bindEvents() {
+        elements.selectFileBtn.addEventListener("click", function () {
+          elements.fileInput.click();
+        });
+
+        elements.fileInput.addEventListener("change", handleFileChange);
+        elements.uploadBtn.addEventListener("click", upload);
+      }
+
+      function handleFileChange() {
+        const selectedFile = elements.fileInput.files[0];
+
+        elements.fileName.textContent = selectedFile
+          ? selectedFile.name
+          : "Aucun fichier sélectionné";
+      }
+
+      function upload() {
+        const file = elements.fileInput.files[0];
+
+        if (!file) {
+          alert("Veuillez sélectionner un fichier.");
+          return;
+        }
+
+        setUploadState(true, "Envoi en cours...");
+
+        const reader = new FileReader();
+
+        reader.onload = function () {
+          const base64 = reader.result.split(",")[1];
+
+          google.script.run
+            .withSuccessHandler(handleUploadSuccess)
+            .withFailureHandler(handleUploadFailure)
+            .uploadFile(
+              base64,
+              file.name,
+              metadata.docType,
+              metadata.fournisseur,
+              metadata.ref,
+              metadata.sousProduit,
+              metadata.inputId
+            );
+        };
+
+        reader.onerror = function () {
+          handleUploadFailure("Impossible de lire le fichier sélectionné.");
+        };
+
+        reader.readAsDataURL(file);
+      }
+
+      function handleUploadSuccess(result) {
+        if (!result || !result.success) {
+          const errorMessage = result && result.error
+            ? result.error
+            : "Erreur inconnue.";
+
+          alert("Erreur lors de l'upload\n\n" + errorMessage);
+          setUploadState(false, "Envoyer le fichier");
+          return;
+        }
+
+        elements.successBox.style.display = "block";
+        elements.sFileName.textContent = result.fileName;
+        elements.sFileId.textContent = result.fichier_id;
+
+        elements.sFileLink.href = result.fileUrl;
+        elements.sFileLink.textContent = "Ouvrir dans Google Drive";
+
+        resetFileInput();
+
+        setUploadState(true, "Upload terminé");
+        elements.closeHint.style.display = "block";
+      }
+
+      function handleUploadFailure(error) {
+        console.error(error);
+        alert("Échec de l'upload.");
+        setUploadState(false, "Envoyer le fichier");
+      }
+
+      function resetFileInput() {
+        elements.fileInput.value = "";
+        elements.fileName.textContent = "Aucun fichier sélectionné";
+      }
+
+      function setUploadState(isDisabled, label) {
+        elements.uploadBtn.disabled = isDisabled;
+        elements.uploadBtn.textContent = label;
+      }
+    </script>
+  </body>
+</html>
