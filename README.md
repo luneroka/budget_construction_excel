@@ -29,14 +29,15 @@ Prototype fonctionnel d'une future application web full-stack dédiée au suivi 
 `budget_construction_excel` est un système Excel avancé conçu pour piloter le budget complet d’un chantier de construction ou de rénovation.
 
 Le projet centralise :
-- les devis ;
-- les factures ;
-- les estimations DIY ;
-- les fournisseurs ;
-- les produits et sous-produits ;
-- les coûts réels ;
-- les documents associés ;
-- les recherches analytiques.
+
+- les devis
+- les factures
+- les estimations DIY
+- les fournisseurs
+- les produits et sous-produits
+- les coûts réels
+- les documents associés
+- les recherches analytiques
 
 L’objectif initial était de remplacer un processus manuel complexe par un workflow structuré, automatisé et maintenable pour un particulier gérant lui-même la construction de sa maison.
 
@@ -45,6 +46,7 @@ Ce prototype constitue aujourd’hui la base fonctionnelle du projet web :
 [budget_construction](https://github.com/luneroka/budget_construction)
 
 actuellement en cours de migration vers :
+
 - FastAPI
 - PostgreSQL
 - React
@@ -56,34 +58,36 @@ actuellement en cours de migration vers :
 
 ## Gestion budgétaire chantier
 
-- suivi du budget prévisionnel ;
-- comparaison budget vs dépenses réelles ;
-- consolidation automatique des coûts ;
-- suivi des acomptes et paiements.
+- suivi du budget prévisionnel
+- comparaison budget vs dépenses réelles
+- consolidation automatique des coûts
+- suivi des acomptes et paiements
 
 ---
 
 ## Gestion des transactions
 
 Gestion centralisée des :
-- devis ;
-- factures ;
-- estimations DIY.
+
+- devis
+- factures
+- estimations DIY
 
 Chaque transaction peut être :
-- catégorisée ;
-- enrichie ;
-- associée à un fournisseur ;
-- reliée à un document PDF.
+
+- catégorisée
+- enrichie
+- associée à un fournisseur
+- reliée à un document PDF
 
 ---
 
 ## Gestion fournisseurs
 
-- annuaire fournisseurs ;
-- gestion des contacts ;
-- suivi des achats ;
-- intégration directe dans les workflows.
+- annuaire fournisseurs
+- gestion des contacts
+- suivi des achats
+- intégration directe dans les workflows
 
 ---
 
@@ -105,25 +109,27 @@ Sous-produit
 
 ## Recherche et filtrage
 
-- recherche multi-critères ;
-- filtres dynamiques ;
-- recherche fournisseur ;
-- recherche produit ;
-- recherche documents.
+- recherche multi-critères
+- filtres dynamiques
+- recherche fournisseur
+- recherche produit
+- recherche documents
 
 ---
 
 ## Intégration Google Drive
 
 Upload automatisé des documents :
-- devis ;
-- factures ;
-- pièces justificatives.
+
+- devis
+- factures
+- pièces justificatives
 
 Via :
-- VBA ;
-- Google Apps Script ;
-- Google Drive.
+
+- VBA
+- Google Apps Script
+- Google Drive
 
 ---
 
@@ -131,24 +137,25 @@ Via :
 
 Le projet utilise un pipeline ETL complet dans Excel :
 
-- staging des données ;
-- enrichissement ;
-- normalisation ;
-- consolidation ;
-- tables analytiques ;
-- reporting.
+- staging des données
+- enrichissement
+- normalisation
+- consolidation
+- tables analytiques
+- reporting
 
 ---
 
 ## Automatisation VBA
 
 Les macros VBA gèrent :
-- les workflows utilisateur ;
-- les validations ;
-- la synchronisation des données ;
-- les uploads ;
-- les recherches ;
-- la gestion des référentiels.
+
+- les workflows utilisateur
+- les validations
+- la synchronisation des données
+- les uploads
+- les recherches
+- la gestion des référentiels
 
 ---
 
@@ -194,17 +201,17 @@ Reporting & Search
 
 ## Tables principales
 
-| Table | Rôle |
-|---|---|
-| `dim_produits` | Catalogue principal produits |
-| `tbl_sous_produits` | Variantes et détails produits |
-| `tbl_fournisseurs` | Référentiel fournisseurs |
-| `input_staging` | Zone de staging des transactions |
+| Table                    | Rôle                              |
+| ------------------------ | --------------------------------- |
+| `dim_produits`           | Catalogue principal produits      |
+| `tbl_sous_produits`      | Variantes et détails produits     |
+| `tbl_fournisseurs`       | Référentiel fournisseurs          |
+| `input_staging`          | Zone de staging des transactions  |
 | `input_staging_enriched` | Données enrichies via Power Query |
-| `fact_transactions` | Consolidation des transactions |
-| `fact_couts` | Table analytique des coûts |
-| `r_search_filters` | Filtres de recherche |
-| `r_search_results` | Résultats dynamiques |
+| `fact_transactions`      | Consolidation des transactions    |
+| `fact_couts`             | Table analytique des coûts        |
+| `r_search_filters`       | Filtres de recherche              |
+| `r_search_results`       | Résultats dynamiques              |
 
 ---
 
@@ -212,13 +219,13 @@ Reporting & Search
 
 <div align="center">
 
-| Technologie | Usage |
-|---|---|
-| Excel | Interface utilisateur & moteur principal |
-| VBA | Automatisation & logique métier |
-| Power Query | ETL & transformation de données |
-| Google Apps Script | Upload & intégration Drive |
-| Google Drive | Stockage documentaire |
+| Technologie        | Usage                                    |
+| ------------------ | ---------------------------------------- |
+| Excel              | Interface utilisateur & moteur principal |
+| VBA                | Automatisation & logique métier          |
+| Power Query        | ETL & transformation de données          |
+| Google Apps Script | Upload & intégration Drive               |
+| Google Drive       | Stockage documentaire                    |
 
 </div>
 
@@ -230,13 +237,13 @@ Le projet utilise Power Query comme véritable pipeline ETL embarqué dans Excel
 
 ## Capacités utilisées
 
-- nettoyage de données ;
-- enrichissement ;
-- jointures ;
-- consolidation ;
-- normalisation ;
-- tables analytiques ;
-- préparation reporting.
+- nettoyage de données
+- enrichissement
+- jointures
+- consolidation
+- normalisation
+- tables analytiques
+- préparation reporting
 
 ---
 
@@ -272,11 +279,12 @@ budget_construction_excel/
 ![Dashboard](docs/screenshots/dashboard.png)
 
 Fonctionnalités visibles :
-- suivi budgétaire ;
-- pipeline Power Query ;
-- tables analytiques ;
-- recherche ;
-- pilotage chantier.
+
+- suivi budgétaire
+- pipeline Power Query
+- tables analytiques
+- recherche
+- pilotage chantier
 
 ---
 
@@ -300,20 +308,22 @@ Fonctionnalités visibles :
 # Configuration Google Apps Script
 
 Le projet utilise Google Apps Script pour :
-- l’upload de documents ;
-- la génération des URLs Google Drive ;
-- la synchronisation des métadonnées.
+
+- l’upload de documents
+- la génération des URLs Google Drive
+- la synchronisation des métadonnées
 
 Pour des raisons de sécurité :
-- les IDs réels ne sont pas inclus ;
-- des placeholders sont utilisés dans le repository.
+
+- les IDs réels ne sont pas inclus
+- des placeholders sont utilisés dans le repository
 
 Exemple :
 
 ```javascript
 const CONFIG = {
-  DRIVE_FOLDER_ID: "<GOOGLE_DRIVE_FOLDER_ID>",
-  SPREADSHEET_ID: "<GOOGLE_SPREADSHEET_ID>"
+  DRIVE_FOLDER_ID: '<GOOGLE_DRIVE_FOLDER_ID>',
+  SPREADSHEET_ID: '<GOOGLE_SPREADSHEET_ID>',
 };
 ```
 
@@ -341,13 +351,13 @@ Ce projet Excel constitue le prototype fonctionnel du projet :
 
 ## Objectifs de la migration
 
-- architecture scalable ;
-- multi-utilisateur ;
-- API REST ;
-- persistance PostgreSQL ;
-- UX moderne ;
-- reporting avancé ;
-- gestion documentaire native.
+- architecture scalable
+- multi-utilisateur
+- API REST
+- persistance PostgreSQL
+- UX moderne
+- reporting avancé
+- gestion documentaire native
 
 ---
 
@@ -355,40 +365,41 @@ Ce projet Excel constitue le prototype fonctionnel du projet :
 
 ## Data
 
-- modélisation de données ;
-- architecture ETL ;
-- structuration analytique ;
-- transformation Power Query ;
-- consolidation de données.
+- modélisation de données
+- architecture ETL
+- structuration analytique
+- transformation Power Query
+- consolidation de données
 
 ---
 
 ## Développement
 
-- VBA ;
-- logique métier ;
-- automatisation ;
-- architecture applicative ;
-- intégration Google Apps Script.
+- VBA
+- logique métier
+- automatisation
+- architecture applicative
+- intégration Google Apps Script
 
 ---
 
 ## Produit / métier
 
-- analyse des besoins ;
-- conception d’outil métier ;
-- optimisation de workflow ;
-- suivi budgétaire chantier ;
-- pilotage financier.
+- analyse des besoins
+- conception d’outil métier
+- optimisation de workflow
+- suivi budgétaire chantier
+- pilotage financier
 
 ---
 
 # Notes
 
 Ce repository représente :
-- la version historique ;
-- la version fonctionnelle ;
-- le prototype métier original.
+
+- la version historique
+- la version fonctionnelle
+- le prototype métier original
 
 Le développement actif continue désormais sur la version web full-stack.
 
@@ -403,9 +414,10 @@ Développeur full-stack & passionné de data analytics.
 Projet développé pour répondre à un besoin réel de pilotage financier chantier sans passer par un constructeur immobilier traditionnel.
 
 Compétences mobilisées :
-- Data Engineering ;
-- ETL ;
-- VBA ;
-- Automation ;
-- Architecture applicative ;
-- Développement full-stack.
+
+- Data Engineering
+- ETL
+- VBA
+- Automation
+- Architecture applicative
+- Développement full-stack
