@@ -217,8 +217,6 @@ Reporting & Search
 
 # Stack technique
 
-<div align="center">
-
 | Technologie        | Usage                                    |
 | ------------------ | ---------------------------------------- |
 | Excel              | Interface utilisateur & moteur principal |
@@ -226,8 +224,6 @@ Reporting & Search
 | Power Query        | ETL & transformation de données          |
 | Google Apps Script | Upload & intégration Drive               |
 | Google Drive       | Stockage documentaire                    |
-
-</div>
 
 ---
 
@@ -285,6 +281,39 @@ Fonctionnalités visibles :
 - tables analytiques
 - recherche
 - pilotage chantier
+
+## Formulaire de saisie
+
+![Formulaire de saisie](docs/screenshots/input_form.png)
+
+Fonctionnalités visibles :
+
+- saisie centralisée des transactions
+- typage devis, facture ou estimation DIY
+- association fournisseur et produit
+- préparation de l'upload documentaire
+
+## Gestion fournisseurs
+
+![Gestion fournisseurs](docs/screenshots/fournisseurs.png)
+
+Fonctionnalités visibles :
+
+- annuaire fournisseurs
+- coordonnées et contacts
+- rattachement aux achats chantier
+- maintenance du référentiel fournisseur
+
+## Recherche et filtrage
+
+![Recherche et filtrage](docs/screenshots/recherche.png)
+
+Fonctionnalités visibles :
+
+- filtres multi-critères
+- consultation des transactions enrichies
+- accès aux documents associés
+- analyse des coûts par fournisseur et produit
 
 ---
 
